@@ -1,6 +1,6 @@
 ![drSoft.fr](logo.png)
 
-# drSoft.fr Validate Customer Pro B2B
+# drSoft.fr Validate Customer
 
 ## Table of contents
 
@@ -13,7 +13,7 @@
 
 ## Presentation
 
-The drSoft.fr Validate Customer Pro B2B module allows administrators to approve new user registrations, while also providing email notifications and automatic user group assignment.
+The drSoft.fr Validate Customer module allows administrators to approve new user registrations, while also providing email notifications and automatic user group assignment.
 
 ## Requirements
 
@@ -33,19 +33,19 @@ for development :
 
 ```bash
 $ cd {PRESTASHOP_FOLDER}/modules
-$ git clone git@github.com:drsoft-fr/drsoftfrvalidatecustomerprob2b.git
-$ cd drsoftfrvalidatecustomerprob2b
+$ git clone git@github.com:drsoft-fr/drsoftfrvalidatecustomer.git
+$ cd drsoftfrvalidatecustomer
 $ composer install -o --no-dev
 $ cd {PRESTASHOP_FOLDER}
-$ php ./bin/console prestashop:module install drsoftfrvalidatecustomerprob2b
+$ php ./bin/console prestashop:module install drsoftfrvalidatecustomer
 $ php ./bin/console cache:clear --env=prod --no-debug
 ```
 
 ## Links
 
 - [drSoft.fr on GitHub](https://github.com/drsoft-fr)
-- [GitHub](https://github.com/drsoft-fr/drsoftfrvalidatecustomerprob2b)
-- [Issues](https://github.com/drsoft-fr/drsoftfrvalidatecustomerprob2b/issues)
+- [GitHub](https://github.com/drsoft-fr/drsoftfrvalidatecustomer)
+- [Issues](https://github.com/drsoft-fr/drsoftfrvalidatecustomer/issues)
 
 ## Authors
 

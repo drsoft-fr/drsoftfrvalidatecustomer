@@ -1,0 +1,23 @@
+admin_drsoft_fr_validate_customer_home_index:
+    path: /
+    methods: [ GET ]
+    defaults:
+        _controller: DrSoftFr\Module\ValidateCustomer\Controller\Admin\HomeController::indexAction
+        _legacy_controller: AdminDrSoftFrValidateCustomerHome
+        _legacy_link: AdminDrSoftFrValidateCustomerHome
+
+admin_drsoft_fr_validate_customer_home_reset:
+    path: /reset
+    methods: [ GET ]
+    defaults:
+        _controller: DrSoftFr\Module\ValidateCustomer\Controller\Admin\HomeController::resetAction
+        _legacy_controller: AdminDrSoftFrValidateCustomerHome
+        _legacy_link: AdminDrSoftFrValidateCustomerHome
+
+admin_drsoft_fr_validate_customer_home_save:
+    path: /
+    methods: [ POST ]
+    defaults:
+        _controller: DrSoftFr\Module\ValidateCustomer\Controller\Admin\HomeController::saveAction
+        _legacy_controller: AdminDrSoftFrValidateCustomerHome
+        _legacy_link: AdminDrSoftFrValidateCustomerHome

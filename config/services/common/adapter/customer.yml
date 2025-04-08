@@ -1,0 +1,21 @@
+services:
+    # Query services
+    drsoft_fr.module.validate_customer.query.customer.get_id_customers_query:
+        class: DrSoftFr\Module\ValidateCustomer\Query\Customer\GetIdCustomersQuery
+        arguments:
+            - '@=service("prestashop.adapter.legacy.context").getContext().shop.id'
+
+    # Query handler services
+    drsoft_fr.module.validate_customer.adapter.query_handler.customer.get_id_customers_query_handler:
+        class: DrSoftFr\Module\ValidateCustomer\Adapter\QueryHandler\Customer\GetIdCustomersQueryHandler
+        arguments:
+            - '@doctrine.dbal.default_connection'
+            - '%database_prefix%'
+
+    # Provider
+    drsoft_fr.module.validate_customer.adapter.query_handler.customer.get_id_customers_provider:
+        class: DrSoftFr\Module\ValidateCustomer\Adapter\QueryHandler\Customer\GetIdCustomersQueryHandler
+        factory: 'drsoft_fr.module.validate_customer.adapter.query_handler.customer.get_id_customers_query_handler:handle'
+        arguments:
+            - '@drsoft_fr.module.validate_customer.query.customer.get_id_customers_query'
+        public: true

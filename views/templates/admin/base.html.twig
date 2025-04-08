@@ -1,19 +1,13 @@
 {% extends '@PrestaShop/Admin/layout.html.twig' %}
 
-{% trans_default_domain "Modules.Drsoftfrvalidatecustomerprob2b.Admin" %}
-
-{% block content_header %}
-    {{ parent() }}
-
-    {% include '@Modules/drsoftfrvalidatecustomerprob2b/views/templates/admin/common/layout/_nav.html.twig' %}
-{% endblock %}
+{% trans_default_domain "Modules.Drsoftfrvalidatecustomer.Admin" %}
 
 {% block content %}
     {{ block('main') }}
 {% endblock %}
 
 {% block content_footer %}
-    {% include '@Modules/drsoftfrvalidatecustomerprob2b/views/templates/admin/common/layout/_footer.html.twig' %}
+    {% include '@Modules/drsoftfrvalidatecustomer/views/templates/admin/common/layout/_footer.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}

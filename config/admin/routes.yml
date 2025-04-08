@@ -1,0 +1,2 @@
+_admin_drsoft_fr_validate_customer_home_routing:
+    resource: "routes/home.yml"

@@ -1,5 +1,5 @@
 {
-  "name": "drsoft-fr/drsoftfrvalidatecustomerprob2b",
+  "name": "drsoft-fr/drsoftfrvalidatecustomer",
   "license": "MIT",
   "type": "prestashop-module",
   "authors": [
@@ -11,16 +11,16 @@
   ],
   "autoload": {
     "psr-4": {
-      "DrSoftFr\\Module\\ValidateCustomerProB2B\\": "src/"
+      "DrSoftFr\\Module\\ValidateCustomer\\": "src/"
     },
     "classmap": [
-      "drsoftfrvalidatecustomerprob2b.php"
+      "drsoftfrvalidatecustomer.php"
     ],
     "exclude-from-classmap": []
   },
   "config": {
     "platform": {
-      "php": "7.2.34"
+      "php": "8.1.0"
     },
     "preferred-install": "dist",
     "classmap-authoritative": true,
@@ -28,14 +28,14 @@
     "sort-packages": true,
     "prepend-autoloader": false
   },
-  "homepage": "https://github.com/drsoft-fr/drsoftfrvalidatecustomerprob2b",
+  "homepage": "https://github.com/drsoft-fr/drsoftfrvalidatecustomer",
   "require": {
-    "php": ">=7.2",
+    "php": ">=8.1",
     "drsoft-fr/prestashop-module-helper": "^1.0"
   },
   "scripts": {},
   "scripts-descriptions": {},
   "support": {
-    "issues": "https://github.com/drsoft-fr/drsoftfrvalidatecustomerprob2b/issues"
+    "issues": "https://github.com/drsoft-fr/drsoftfrvalidatecustomer/issues"
   }
 }
