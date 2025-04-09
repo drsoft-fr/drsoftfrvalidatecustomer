@@ -1,15 +1,3 @@
 imports:
     - { resource: services/common/adapter.yml }
     - { resource: services/common/setting.yml }
-
-services:
-    # Data provider
-    drsoft_fr.module.validate_customer.data.provider.form_fields_provider:
-        class: DrSoftFr\Module\ValidateCustomer\Data\Provider\FormFieldsProvider
-        arguments:
-            - "@=service('prestashop.adapter.legacy.context').getContext().getTranslator()"
-
-    drsoft_fr.module.validate_customer.data.form_fields_data_provider:
-        class: DrSoftFr\Module\ValidateCustomer\Data\Provider\FormFieldsProvider
-        factory: 'drsoft_fr.module.validate_customer.data.provider.form_fields_provider:getData'
-        public: true
