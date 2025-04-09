@@ -19,14 +19,14 @@ use Throwable;
 final class SettingConfiguration implements DataConfigurationInterface
 {
     const CONFIGURATION_KEYS = [
-        'admin_action_customer_account_add_email' => 'DRSOFT_FR_VALIDATE_CUSTOMER_PRO_ADMIN_ACTION_CUSTOMER_ACCOUNT_ADD_EMAIL',
-        'admin_send_email_on_action_customer_account_add_hook' => 'DRSOFT_FR_VALIDATE_CUSTOMER_PRO_ADMIN_EMAIL_ON_ACTION_CUSTOMER_ACCOUNT_ADD',
-        'cms_notify_id' => 'DRSOFT_FR_VALIDATE_CUSTOMER_PRO_CMS_NOTIFY_ID',
-        'cms_not_activated_id' => 'DRSOFT_FR_VALIDATE_CUSTOMER_PRO_CMS_NOT_ACTIVATED_ID',
-        'enable_email_approval' => 'DRSOFT_FR_VALIDATE_CUSTOMER_PRO_ENABLE_EMAIL_APPROVAL',
-        'enable_email_pending_approval' => 'DRSOFT_FR_VALIDATE_CUSTOMER_PRO_ENABLE_EMAIL_PENDING_APPROVAL',
-        'enable_unauthenticated_customer_alert' => 'DRSOFT_FR_VALIDATE_CUSTOMER_PRO_ENABLE_UNAUTHENTICATED_CUSTOMER_ALERT',
-        'enable_unapproved_customer_alert' => 'DRSOFT_FR_VALIDATE_CUSTOMER_PRO_ENABLE_UNAPPROVED_CUSTOMER_ALERT',
+        'admin_action_customer_account_add_email' => 'DRSOFT_FR_VALIDATE_CUSTOMER_ADMIN_ACTION_CUSTOMER_ACCOUNT_ADD_EMAIL',
+        'admin_send_email_on_action_customer_account_add_hook' => 'DRSOFT_FR_VALIDATE_CUSTOMER_ADMIN_EMAIL_ON_ACTION_CUSTOMER_ACCOUNT_ADD',
+        'cms_notify_id' => 'DRSOFT_FR_VALIDATE_CUSTOMER_CMS_NOTIFY_ID',
+        'cms_not_activated_id' => 'DRSOFT_FR_VALIDATE_CUSTOMER_CMS_NOT_ACTIVATED_ID',
+        'enable_email_approval' => 'DRSOFT_FR_VALIDATE_CUSTOMER_ENABLE_EMAIL_APPROVAL',
+        'enable_email_pending_approval' => 'DRSOFT_FR_VALIDATE_CUSTOMER_ENABLE_EMAIL_PENDING_APPROVAL',
+        'enable_unauthenticated_customer_alert' => 'DRSOFT_FR_VALIDATE_CUSTOMER_ENABLE_UNAUTHENTICATED_CUSTOMER_ALERT',
+        'enable_unapproved_customer_alert' => 'DRSOFT_FR_VALIDATE_CUSTOMER_ENABLE_UNAPPROVED_CUSTOMER_ALERT',
     ];
 
     const CONFIGURATION_DEFAULT_VALUES = [
