@@ -1,3 +1,2 @@
 imports:
-    - { resource: services/common/adapter.yml }
     - { resource: services/common/setting.yml }

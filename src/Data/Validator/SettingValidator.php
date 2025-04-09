@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace DrSoftFr\Module\ValidateCustomer\Data\Validator;
 
-use DrSoftFr\Module\ValidateCustomer\Exception\CmsPage\NonexistentCmsPageIdException;
 use Exception;
 use DrSoftFr\Module\ValidateCustomer\Exception\Setting\SettingConstraintException;
 use DrSoftFr\PrestaShopModuleHelper\Data\Validator\AbstractValidator;
@@ -13,38 +12,21 @@ use DrSoftFr\PrestaShopModuleHelper\Data\Validator\ValidatorInterface;
 final class SettingValidator extends AbstractValidator implements ValidatorInterface
 {
     /**
-     * @var array
-     */
-    private $cmsIds;
-
-    public function __construct(
-        array $cmsIds
-    )
-    {
-        $this->cmsIds = $cmsIds;
-    }
-
-
-    /**
      * Validates all the data fields.
      *
      * @param array $data The data array to validate.
      *
      * @return bool Returns true if all the fields pass the validation.
      *
-     * @throws SettingConstraintException|NonexistentCmsPageIdException If any of the data fields fail validation.
+     * @throws SettingConstraintException If any of the data fields fail validation.
      */
     public function validate(array $data): bool
     {
         $this
             ->validateAdminSendEmailOnActionCustomerAccountAddHook($data)
             ->validateAdminActionCustomerAccountAddEmail($data)
-            ->validateCmsNotifyId($data)
-            ->validateCmsNotActivatedId($data)
             ->validateEnableEmailApproval($data)
-            ->validateEnableEmailPendingApproval($data)
-            ->validateEnableUnauthenticatedCustomerAlert($data)
-            ->validateEnableUnapprovedCustomerAlert($data);
+            ->validateEnableEmailPendingApproval($data);
 
         return true;
     }
@@ -96,78 +78,6 @@ final class SettingValidator extends AbstractValidator implements ValidatorInter
     }
 
     /**
-     * Validates the cms_notify_id in the given data array.
-     *
-     * @param array $configuration The configuration array to validate.
-     *
-     * @return SettingValidator
-     *
-     * @throws NonexistentCmsPageIdException If the 'cms_notify_id' field is not a valid ID.
-     */
-    private function validateCmsNotifyId(array $configuration): SettingValidator
-    {
-        if (empty($configuration['cms_notify_id'])) {
-            return $this;
-        }
-
-        $configuration['cms_notify_id'] = (int)$configuration['cms_notify_id'];
-
-        if (
-            0 >= $configuration['cms_notify_id'] ||
-            !in_array(
-                $configuration['cms_notify_id'],
-                $this->cmsIds,
-                true
-            )
-        ) {
-            throw new NonexistentCmsPageIdException(
-                sprintf(
-                    'CMS width "%d" does not exist.',
-                    $configuration['cms_notify_id']
-                )
-            );
-        }
-
-        return $this;
-    }
-
-    /**
-     * Validates the cms_not_activated_id in the given data array.
-     *
-     * @param array $configuration The configuration array to validate.
-     *
-     * @return SettingValidator
-     *
-     * @throws NonexistentCmsPageIdException If the 'cms_not_activated_id' field is not a valid ID.
-     */
-    private function validateCmsNotActivatedId(array $configuration): SettingValidator
-    {
-        if (empty($configuration['cms_not_activated_id'])) {
-            return $this;
-        }
-
-        $configuration['cms_not_activated_id'] = (int)$configuration['cms_not_activated_id'];
-
-        if (
-            0 >= $configuration['cms_not_activated_id'] ||
-            !in_array(
-                $configuration['cms_not_activated_id'],
-                $this->cmsIds,
-                true
-            )
-        ) {
-            throw new NonexistentCmsPageIdException(
-                sprintf(
-                    'CMS width "%d" does not exist.',
-                    $configuration['cms_not_activated_id']
-                )
-            );
-        }
-
-        return $this;
-    }
-
-    /**
      * Validates the enable_email_approval field in the configuration array.
      * Ensures that the field is set and is a boolean value.
      *
@@ -205,43 +115,5 @@ final class SettingValidator extends AbstractValidator implements ValidatorInter
         $this->isBool($configuration, 'enable_email_pending_approval', new SettingConstraintException);
 
         return $this;
-    }
-
-    /**
-     * Validates the enable_unauthenticated_customer_alert field in the configuration array.
-     * Ensures that the field is set and is a boolean value.
-     *
-     * @param array $configuration The configuration array to validate.
-     *
-     * @return SettingValidator
-     *
-     * @throws SettingConstraintException If the enable_unauthenticated_customer_alert field is not set.
-     * @throws SettingConstraintException If the enable_unauthenticated_customer_alert field is not a boolean value.
-     * @throws Exception
-     */
-    private function validateEnableUnauthenticatedCustomerAlert(array $configuration): SettingValidator
-    {
-        $this->isSet($configuration, 'enable_unauthenticated_customer_alert', new SettingConstraintException);
-        $this->isBool($configuration, 'enable_unauthenticated_customer_alert', new SettingConstraintException);
-
-        return $this;
-    }
-
-    /**
-     * Validates the enable_unapproved_customer_alert field in the configuration array.
-     * Ensures that the field is set and is a boolean value.
-     *
-     * @param array $configuration The configuration array to validate.
-     *
-     * @return void
-     *
-     * @throws SettingConstraintException If the enable_unapproved_customer_alert field is not set.
-     * @throws SettingConstraintException If the enable_unapproved_customer_alert field is not a boolean value.
-     * @throws Exception
-     */
-    private function validateEnableUnapprovedCustomerAlert(array $configuration): void
-    {
-        $this->isSet($configuration, 'enable_unapproved_customer_alert', new SettingConstraintException);
-        $this->isBool($configuration, 'enable_unapproved_customer_alert', new SettingConstraintException);
     }
 }

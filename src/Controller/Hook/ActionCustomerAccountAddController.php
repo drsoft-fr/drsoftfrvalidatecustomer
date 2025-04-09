@@ -191,10 +191,6 @@ final class ActionCustomerAccountAddController extends AbstractHookController im
      */
     private function handleAlert(): ActionCustomerAccountAddController
     {
-        if (false === $this->settings['enable_unapproved_customer_alert']) {
-            return $this;
-        }
-
         $this->getContext()->controller->success[] = $this->getContext()->getTranslator()->trans(
             'Registration successfully. Your account need to be activated. You will receive a confirmation soon.',
             [],
@@ -335,20 +331,12 @@ final class ActionCustomerAccountAddController extends AbstractHookController im
     /**
      * Handle the execution of the redirection process.
      *
-     * This method checks if manual validation account is enabled in the settings.
-     * If manual validation is not enabled or if the CMS notify ID is empty, the method stops execution and returns early.
-     * Otherwise, it redirects the user to the CMS link based on the provided CMS notify ID.
-     *
      * @return void
      *
      * @throws Exception
      */
     private function handleRedirection(): void
     {
-        if (empty($this->settings['cms_notify_id'])) {
-            return;
-        }
-
         $this
             ->getContext()
             ->controller
@@ -356,12 +344,7 @@ final class ActionCustomerAccountAddController extends AbstractHookController im
                 $this
                     ->getContext()
                     ->link
-                    ->getCMSLink(
-                        (int)$this->settings['cms_notify_id'],
-                        null,
-                        null,
-                        $this->langId
-                    )
+                    ->getPageLink('authentication')
             );
     }
 

@@ -17,7 +17,7 @@ The drSoft.fr Validate Customer module allows administrators to approve new user
 
 ## Requirements
 
-This module requires PrestaShop 1.7.8 to work correctly.
+This module requires PrestaShop 8.1 to work correctly.
 
 This library also requires :
 

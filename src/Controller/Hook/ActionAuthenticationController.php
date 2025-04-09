@@ -19,16 +19,6 @@ final class ActionAuthenticationController extends AbstractHookController implem
     private $customer;
 
     /**
-     * @var int $langId
-     */
-    private $langId;
-
-    /**
-     * @var array $settings
-     */
-    private $settings;
-
-    /**
      * Checks if the data is valid.
      *
      * @return bool True if the data is valid, false otherwise.
@@ -69,26 +59,12 @@ final class ActionAuthenticationController extends AbstractHookController implem
     {
         $this->customer->logout();
 
-        if (true === $this->settings['enable_unapproved_customer_alert']) {
-            $this->getContext()->controller->errors[] = $alert;
-        }
+        $this->getContext()->controller->errors[] = $alert;
 
-        if (!empty($this->settings['cms_not_activated_id'])) {
-            $link = $this
-                ->getContext()
-                ->link
-                ->getCMSLink(
-                    (int)$this->settings['cms_not_activated_id'],
-                    null,
-                    null,
-                    $this->langId
-                );
-        } else {
-            $link = $this
-                ->getContext()
-                ->link
-                ->getPageLink('index');
-        }
+        $link = $this
+            ->getContext()
+            ->link
+            ->getPageLink('authentication');
 
         $this
             ->getContext()
@@ -129,7 +105,7 @@ final class ActionAuthenticationController extends AbstractHookController implem
      */
     private function handleManualValidationAccount(): void
     {
-        if (true === $this->customer->active) {
+        if (true === (bool)$this->customer->active) {
             return;
         }
 
@@ -150,14 +126,11 @@ final class ActionAuthenticationController extends AbstractHookController implem
     public function run(): void
     {
         try {
-            $this->settings = $this->module->get(Config::SETTING_PROVIDER_SERVICE);
-
             if (false === $this->checkData()) {
                 return;
             }
 
             $this->customer = $this->getContext()->customer;
-            $this->langId = (int)$this->getContext()->language->id;
 
             $this->handleManualValidationAccount();
         } catch (Throwable $t) {

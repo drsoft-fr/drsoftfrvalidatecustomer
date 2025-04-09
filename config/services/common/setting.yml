@@ -2,8 +2,6 @@ services:
     # Data validator
     drsoft_fr.module.validate_customer.data.validator.setting_validator:
         class: DrSoftFr\Module\ValidateCustomer\Data\Validator\SettingValidator
-        arguments:
-            - '@drsoft_fr.module.validate_customer.adapter.query_handler.cms_page.get_id_cms_pages_provider'
 
     # Data factory
     drsoft_fr.module.validate_customer.data.factory.setting_data_factory:

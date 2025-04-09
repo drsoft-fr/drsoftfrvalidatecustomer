@@ -17,15 +17,9 @@ final class Installer
     const HOOKS = [
         'actionAuthentication',
         'actionCustomerAccountAdd',
-        'actionFrontControllerSetVariables',
         'actionListMailThemes',
         'actionObjectUpdateAfter',
     ];
-
-    /**
-     * @var FixturesInstaller
-     */
-    private $fixturesInstaller;
 
     /**
      * @var SettingConfiguration
@@ -33,11 +27,9 @@ final class Installer
     private $settingConfiguration;
 
     public function __construct(
-        FixturesInstaller    $fixturesInstaller,
         SettingConfiguration $settingConfiguration
     )
     {
-        $this->fixturesInstaller = $fixturesInstaller;
         $this->settingConfiguration = $settingConfiguration;
     }
 
@@ -56,10 +48,7 @@ final class Installer
             throw new Exception('An error occurred when registering hooks for the module.');
         }
 
-        $fixturesConfiguration = $this->fixturesInstaller->install();
-        $configuration = array_merge($this->settingConfiguration::CONFIGURATION_DEFAULT_VALUES, $fixturesConfiguration);
-
-        $this->settingConfiguration->updateConfiguration($configuration);
+        $this->settingConfiguration->updateConfiguration($this->settingConfiguration::CONFIGURATION_DEFAULT_VALUES);
 
         return true;
     }
@@ -94,14 +83,6 @@ final class Installer
     private function registerHooks(Module $module): bool
     {
         return (bool)$module->registerHook(self::HOOKS);
-    }
-
-    /**
-     * @return FixturesInstaller
-     */
-    public function getFixturesInstaller(): FixturesInstaller
-    {
-        return $this->fixturesInstaller;
     }
 
     /**

@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace DrSoftFr\Module\ValidateCustomer\Install\Factory;
 
-use Db;
 use DrSoftFr\Module\ValidateCustomer\Data\Configuration\SettingConfiguration;
-use DrSoftFr\Module\ValidateCustomer\Install\FixturesInstaller;
 use DrSoftFr\Module\ValidateCustomer\Install\Installer;
 use PrestaShop\PrestaShop\Adapter\Configuration;
 
@@ -23,7 +21,6 @@ final class InstallerFactory
     public static function create(): Installer
     {
         return new Installer(
-            new FixturesInstaller(Db::getInstance()),
             new SettingConfiguration(
                 new Configuration()
             ));

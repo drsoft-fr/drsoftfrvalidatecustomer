@@ -6,7 +6,6 @@ use DrSoftFr\Module\ValidateCustomer\Config;
 use DrSoftFr\Module\ValidateCustomer\Controller\Admin\HomeController;
 use DrSoftFr\Module\ValidateCustomer\Controller\Hook\ActionAuthenticationController;
 use DrSoftFr\Module\ValidateCustomer\Controller\Hook\ActionCustomerAccountAddController;
-use DrSoftFr\Module\ValidateCustomer\Controller\Hook\ActionFrontControllerSetVariablesController;
 use DrSoftFr\Module\ValidateCustomer\Controller\Hook\ActionListMailThemesController;
 use DrSoftFr\Module\ValidateCustomer\Controller\Hook\ActionObjectUpdateAfterController;
 use DrSoftFr\Module\ValidateCustomer\Install\Factory\InstallerFactory;
@@ -55,7 +54,7 @@ class drsoftfrvalidatecustomer extends Module
         $this->name = 'drsoftfrvalidatecustomer';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = [
-            'min' => '1.7.8',
+            'min' => '8.1',
             'max' => _PS_VERSION_
         ];
         $this->tab = 'administration';
@@ -216,19 +215,6 @@ class drsoftfrvalidatecustomer extends Module
         $controller = new ActionCustomerAccountAddController($this, $file, $this->_path, $p);
 
         $controller->run();
-    }
-
-    /**
-     * @param array $p
-     *
-     * @return array
-     */
-    public function hookActionFrontControllerSetVariables(array $p = []): array
-    {
-        $file = _PS_MODULE_DIR_ . $this->name . '/' . $this->name . '.php';
-        $controller = new ActionFrontControllerSetVariablesController($this, $file, $this->_path, $p);
-
-        return $controller->run();
     }
 
     /**

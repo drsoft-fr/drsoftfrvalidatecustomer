@@ -8,10 +8,8 @@ use PrestaShop\PrestaShop\Core\ConstraintValidator\Constraints\CleanHtml;
 use PrestaShop\PrestaShop\Core\Domain\ValueObject\Email as EmployeeEmail;
 use PrestaShopBundle\Form\Admin\Type\EmailType;
 use PrestaShopBundle\Form\Admin\Type\TranslatorAwareType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use PrestaShopBundle\Form\Admin\Type\SwitchType;
-use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 
@@ -23,22 +21,6 @@ use Symfony\Component\Validator\Constraints\Length;
  */
 final class SettingType extends TranslatorAwareType
 {
-    /**
-     * @var array
-     */
-    private $cmsPageChoices;
-
-    public function __construct(
-        TranslatorInterface $translator,
-        array               $locales,
-        array               $cmsPageChoices
-    )
-    {
-        parent::__construct($translator, $locales);
-
-        $this->cmsPageChoices = $cmsPageChoices;
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -73,36 +55,6 @@ final class SettingType extends TranslatorAwareType
                 ),
                 'required' => true,
             ])
-            ->add('cms_notify_id', ChoiceType::class, [
-                'empty_data' => 0,
-                'choices' => array_merge(['--' => 0], $this->cmsPageChoices),
-                'choice_translation_domain' => false,
-                'help' => $this->trans(
-                    'CMS page ID where validate account waiting. Selecting nothing will disable redirection.',
-                    'Modules.Drsoftfrvalidatecustomer.Admin'
-                ),
-                'label' => $this->trans(
-                    'CMS page ID validate account waiting',
-                    'Modules.Drsoftfrvalidatecustomer.Admin'
-                ),
-                'multiple' => false,
-                'required' => true,
-            ])
-            ->add('cms_not_activated_id', ChoiceType::class, [
-                'empty_data' => 0,
-                'choices' => array_merge(['--' => 0], $this->cmsPageChoices),
-                'choice_translation_domain' => false,
-                'help' => $this->trans(
-                    'CMS page ID where the user is redirect if he try to login and his account are not longer enable. Selecting nothing will disable redirection.',
-                    'Modules.Drsoftfrvalidatecustomer.Admin'
-                ),
-                'label' => $this->trans(
-                    'CMS page ID account not enable.',
-                    'Modules.Drsoftfrvalidatecustomer.Admin'
-                ),
-                'multiple' => false,
-                'required' => true,
-            ])
             ->add('enable_email_approval', SwitchType::class, [
                 'empty_data' => false,
                 'help' => $this->trans(
@@ -123,30 +75,6 @@ final class SettingType extends TranslatorAwareType
                 ),
                 'label' => $this->trans(
                     'Enable email pending',
-                    'Modules.Drsoftfrvalidatecustomer.Admin'
-                ),
-                'required' => true,
-            ])
-            ->add('enable_unauthenticated_customer_alert', SwitchType::class, [
-                'empty_data' => false,
-                'help' => $this->trans(
-                    'Would you like to display an alert to visitors who are not logged in?',
-                    'Modules.Drsoftfrvalidatecustomer.Admin'
-                ),
-                'label' => $this->trans(
-                    'Enable unauthenticated customer alert',
-                    'Modules.Drsoftfrvalidatecustomer.Admin'
-                ),
-                'required' => true,
-            ])
-            ->add('enable_unapproved_customer_alert', SwitchType::class, [
-                'empty_data' => false,
-                'help' => $this->trans(
-                    'Would you like to display an alert to unapproved visitors?',
-                    'Modules.Drsoftfrvalidatecustomer.Admin'
-                ),
-                'label' => $this->trans(
-                    'Enable unapproved customer alert',
                     'Modules.Drsoftfrvalidatecustomer.Admin'
                 ),
                 'required' => true,
