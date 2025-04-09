@@ -74,7 +74,7 @@ final class HomeController extends FrameworkBundleAdminController
             $this->addFlash(
                 'success',
                 $this->trans(
-                    'The default home are reset.',
+                    'The default setting are reset.',
                     'Modules.Drsoftfrvalidatecustomer.Admin'
                 )
             );
@@ -82,7 +82,7 @@ final class HomeController extends FrameworkBundleAdminController
             $this->addFlash(
                 'error',
                 $this->trans(
-                    'Cannot reset the home. Exception: #%code% - %message%',
+                    'Cannot reset the setting. Exception: #%code% - %message%',
                     'Modules.Drsoftfrvalidatecustomer.Error',
                     [
                         '%code%' => $t->getCode(),
@@ -140,7 +140,7 @@ final class HomeController extends FrameworkBundleAdminController
                 $this->addFlash(
                     'success',
                     $this->trans(
-                        'Your home are saved.',
+                        'Your setting are saved.',
                         'Modules.Drsoftfrvalidatecustomer.Success'
                     )
                 );
@@ -150,7 +150,7 @@ final class HomeController extends FrameworkBundleAdminController
             $this->addFlash(
                 'error',
                 $this->trans(
-                    'Cannot save the home. Throwable: #%code% - %message%',
+                    'Cannot save the setting. Throwable: #%code% - %message%',
                     'Modules.Drsoftfrvalidatecustomer.Error',
                     [
                         '%code%' => $t->getCode(),
