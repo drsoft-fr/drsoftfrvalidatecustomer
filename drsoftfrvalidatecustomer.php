@@ -64,7 +64,7 @@ class drsoftfrvalidatecustomer extends Module
                 'class_name' => HomeController::TAB_CLASS_NAME,
                 'name' => 'Validate Customer',
                 'parent_class_name' => 'AdminParentCustomer',
-                'route_name' => 'admin_drsoft_fr_validate_customer_home',
+                'route_name' => 'admin_drsoft_fr_validate_customer_home_index',
                 'visible' => true,
             ],
         ];

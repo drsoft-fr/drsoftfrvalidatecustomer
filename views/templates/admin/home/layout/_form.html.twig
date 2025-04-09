@@ -14,8 +14,8 @@
                      id="v-pills-settings-tab"
                      role="tablist">
                     <button aria-controls="v-pills-settings-2"
-                            aria-selected="false"
-                            class="btn nav-link"
+                            aria-selected="true"
+                            class="active btn nav-link"
                             data-target="#v-pills-settings-2"
                             data-toggle="pill"
                             id="v-pills-setting-2-tab"
@@ -45,8 +45,9 @@
                     </button>
                 </div>
                 {% block drsoft_fr_validate_customer_setting_form_rest %}
+                    <div class="flex-grow-1 tab-content" id="v-pills-settings-tab-content">
                         <div aria-labelledby="v-pills-setting-2-tab"
-                             class="tab-pane fade"
+                             class="tab-pane fade show active"
                              id="v-pills-settings-2"
                              role="tabpanel"
                              tabindex="0">
@@ -103,7 +104,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="{{ path('admin_drsoft_fr_validate_customer_setting_reset') }}"
+            <a href="{{ path('admin_drsoft_fr_validate_customer_home_reset') }}"
                class="btn btn-outline-secondary">
                 {{ 'Reset default settings'|trans }}
             </a>

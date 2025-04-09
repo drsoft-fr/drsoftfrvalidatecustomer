@@ -47,7 +47,7 @@ final class HomeController extends FrameworkBundleAdminController
 
         return $this->render(self::TEMPLATE_FOLDER . 'index.html.twig', [
             'enableSidebar' => true,
-            'drsoft_fr_validate_customer_home_form' => $form->createView(),
+            'drsoft_fr_validate_customer_setting_form' => $form->createView(),
             'help_link' => $this->generateSidebarLink($request->attributes->get('_legacy_controller')),
             'module' => $this->getModule(),
         ]);
@@ -180,7 +180,7 @@ final class HomeController extends FrameworkBundleAdminController
     protected function getSettingConfiguration(): SettingConfiguration
     {
         /** @type SettingConfiguration */
-        return $this->get('drsoft_fr.module.validate_customer.data.configuration.home_configuration');
+        return $this->get('drsoft_fr.module.validate_customer.data.configuration.setting_configuration');
     }
 
     /**
@@ -191,6 +191,6 @@ final class HomeController extends FrameworkBundleAdminController
     protected function getValidateCustomerFormHandler(): FormHandlerInterface
     {
         /** @type FormHandlerInterface */
-        return $this->get('drsoft_fr.module.validate_customer.form.handler.home_form_handler');
+        return $this->get('drsoft_fr.module.validate_customer.form.handler.setting_form_handler');
     }
 }
